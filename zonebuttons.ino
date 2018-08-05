@@ -82,7 +82,7 @@ void setup() {
   pinMode(button_5_Pin, INPUT_PULLUP);
   pinMode(button_6_Pin, INPUT_PULLUP);
   pinMode(button_7_Pin, INPUT_PULLUP);
-  pinMode(button_8_Pin, INPUT_PULLUP);
+  pinMode(button_8_Pin, INPUT);
 
   Serial.begin(115200);
   delay(10);
@@ -252,9 +252,9 @@ button_8_State = digitalRead(button_8_Pin);
   }
   }
 
- if ( button_8_State == LOW ) { // Checks if pin is low
+ if ( button_8_State == HIGH ) { // Checks if pin is HIGH
     delay( 500 ); // Delay for 500ms to check for button debounce
- if ( digitalRead(button_8_Pin) == LOW ) { // Read pin to see if still low after debounce delay
+ if ( digitalRead(button_8_Pin) == HIGH ) { // Read pin to see if still HIGH after debounce delay
     client.publish(button_8_topic, "on" , true);
     Serial.println("Button 8 is pressed!");
     delay( 5000 ); //wait 5 seconds, then publish the off message
